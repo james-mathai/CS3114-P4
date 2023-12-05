@@ -9,7 +9,6 @@
 public class Processor {
     private Hash artists;
     private Hash songs;
-    // private MemManager manager;
     // private Graph graph;
     
     /**
