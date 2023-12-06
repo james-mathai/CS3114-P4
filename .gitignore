@@ -3,7 +3,6 @@
 .TemporaryItems
 .DS_Store
 Thumbs.db
-<<<<<<< HEAD
 /bin/
 *.class
 *.jar
@@ -26,6 +25,4 @@ hs_error_pid*
 *.lib
 *.exe
 *.app
-=======
->>>>>>> branch 'master' of https://web-cat.cs.vt.edu/Web-CAT/WebObjects/Web-CAT.woa/git/StudentProject/95aa8aaf-d6ef-4e22-8838-9e7f008b4b26
 /bin/
