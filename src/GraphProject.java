@@ -27,8 +27,7 @@
 //   during the discussion. I have violated neither the spirit nor
 //   letter of this restriction.
 
-public class GraphProject
-{
+public class GraphProject {
     /**
      * @param args
      *     Command line parameters
