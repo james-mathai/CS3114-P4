@@ -22,7 +22,10 @@ public class Parser {
         file = new Scanner(new File(filename));
         hashSize = size;
         processor = new Processor(hashSize);
+    }
 
+
+    public void parseAll() {
         while (file.hasNext()) {
             parseNext();
         }
@@ -40,7 +43,7 @@ public class Parser {
                 String artist = file.next().trim();
                 file.useDelimiter("\n");
                 String song = file.next();
-                song = song.substring("<SEP>".length());
+                song = song.substring("<SEP>".length(), song.length() - 1);
                 file.useDelimiter("\\p{javaWhitespace}+");
 
                 processor.insert(artist, song);

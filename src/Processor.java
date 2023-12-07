@@ -101,7 +101,6 @@ public class Processor {
         }
         if (type.equals("song")) {
             v = songs.get(name);
-            songs.remove(name);
             if (songs.remove(name)) {
                 System.out.println("|" + name
                     + "| is removed from the Song database.");

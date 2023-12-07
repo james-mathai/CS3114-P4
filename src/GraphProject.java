@@ -45,5 +45,6 @@ public class GraphProject {
     public static void main(String[] args)
         throws NumberFormatException, FileNotFoundException {
         parser = new Parser(args[1], Integer.parseInt(args[0]));
+        parser.parseAll();
     }
 }

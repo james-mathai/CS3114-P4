@@ -1,17 +1,23 @@
-remove song When Summer's Through
+remove artist Jimbo
 print song
 print artist
-insert Blind Lemon Jefferson<SEP>Long Lonesome Blues
-insert Blind Lemon Jefferson<SEP>Long Lonesome Blues
-insert Blind Lemon Jefferson<SEP>Long   Lonesome Blues
-insert Blind Lemon Jefferson<SEP>long Lonesome Blues
-insert Ma Rainey<SEP>Ma Rainey's Black Bottom
-insert Ma Rainey<SEP>Long Lonesome Blues
-insert Ma Rainey<SEP>Mississippi Boweavil Blues
-insert Ma Rainey<SEP>Fixin' To Die Blues
-print artist
+insert Dire Straits<SEP>Telegraph Road
 print song
-remove song Sleepy
-remove artist ma rainey
-remove artist Ma Rainey
 print artist
+insert Dire Straits<SEP>Brothers in Arms
+insert Dire Straits<SEP>Telegraph Road
+insert Telegraph Road<SEP>Dire Straits
+print song
+print artist
+remove artist Telegraph Road
+remove song Dire Straits
+print song
+print artist
+insert Queen<SEP>Bohemian Rhapsody
+insert Queen<SEP>Father to Son
+print song
+insert Queen<SEP>Lazing on a Sunday Afternoon
+print song
+insert Queen<SEP>Hammer to Fall
+insert Mark Knopfler<SEP>Telegraph Road
+insert Mark Knopfler<SEP>Brothers in Arms
