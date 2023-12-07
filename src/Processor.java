@@ -97,6 +97,7 @@ public class Processor {
             else {
                 System.out.println("|" + name
                     + "| does not exist in the Artist database.");
+                return;
             }
         }
         if (type.equals("song")) {
@@ -108,10 +109,12 @@ public class Processor {
             else {
                 System.out.println("|" + name
                     + "| does not exist in the Song database.");
+                return;
             }
         }
 
         if (v == -1) {
+            System.out.println("THIS SHOULD NOT HAPPEN");
             return;
         }
 

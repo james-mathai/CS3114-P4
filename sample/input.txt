@@ -13,7 +13,13 @@ remove artist Telegraph Road
 remove song Dire Straits
 print song
 print artist
+remove song Brothers in Arms
+insert Jethro Tull<SEP>Aqualung
+insert Jethro Tull<SEP>Thick as a Brick
+print song
+insert Dire Straits<SEP>Brothers in Arms
 insert Queen<SEP>Bohemian Rhapsody
+print song
 insert Queen<SEP>Father to Son
 print song
 insert Queen<SEP>Lazing on a Sunday Afternoon
@@ -21,3 +27,4 @@ print song
 insert Queen<SEP>Hammer to Fall
 insert Mark Knopfler<SEP>Telegraph Road
 insert Mark Knopfler<SEP>Brothers in Arms
+print song

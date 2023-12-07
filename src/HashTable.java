@@ -34,10 +34,10 @@ public class HashTable {
             int temp = probe(name);
 
             if (temp != -1) {
+                resize();
+
                 table[temp] = new Record(name, -1);
                 count++;
-
-                resize();
 
                 return true;
             }
@@ -150,18 +150,21 @@ public class HashTable {
      * @return index of insert point, -1 if not found
      */
     public int probe(String name) {
+        if (count == table.length)
+            return -1;
         int base = Hash.h(name, table.length);
         int temp = base;
 
-        for (int i = 0; i < table.length; i++) {
+        for (int i = 0;; i++) {
             if (table[temp] != null) {
+                if (table[temp] == tombstone)
+                    return temp;
                 temp = ((base + (i * i)) % table.length);
             }
             else {
                 return temp;
             }
         }
-        return -1;
     }
 
 
@@ -171,9 +174,9 @@ public class HashTable {
      * @return T/F depending on success of resize
      */
     public boolean resize() {
-        if (getSize() >= (table.length / 2)) {
+        if (count >= (table.length / 2)) {
             int newSize = table.length * 2;
-            int tempSize = count;
+            // int tempSize = count;
 
             // record array without tombstones -> converted to null
             Record[] values = new Record[table.length];
@@ -186,7 +189,7 @@ public class HashTable {
                     values[i] = table[i];
                 }
 
-                count = tempSize;
+                // count = tempSize;
             }
 
             table = new Record[newSize];

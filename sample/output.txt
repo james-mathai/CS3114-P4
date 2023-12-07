@@ -27,22 +27,52 @@ total songs: 2
 1: |Dire Straits|
 6: TOMBSTONE
 total artists: 1
+|Brothers in Arms| is removed from the Song database.
+|Jethro Tull| is added to the Artist database.
+|Aqualung| is added to the Song database.
+|Thick as a Brick| is added to the Song database.
+1: TOMBSTONE
+3: TOMBSTONE
+5: |Aqualung|
+6: |Telegraph Road|
+9: |Thick as a Brick|
+total songs: 3
+|Brothers in Arms| is added to the Song database.
 |Queen| is added to the Artist database.
 |Bohemian Rhapsody| is added to the Song database.
-|Father to Son| is added to the Song database.
 1: TOMBSTONE
 2: |Bohemian Rhapsody|
 3: |Brothers in Arms|
+5: |Aqualung|
 6: |Telegraph Road|
-8: |Father to Son|
-total songs: 4
-|Lazing on a Sunday Afternoon| is added to the Song database.
+9: |Thick as a Brick|
+total songs: 5
+|Father to Son| is added to the Song database.
 Song hash table size doubled.
 1: |Father to Son|
 3: |Brothers in Arms|
+5: |Aqualung|
+6: |Thick as a Brick|
+12: |Bohemian Rhapsody|
+16: |Telegraph Road|
+total songs: 6
+|Lazing on a Sunday Afternoon| is added to the Song database.
+1: |Father to Son|
+3: |Brothers in Arms|
+5: |Aqualung|
+6: |Thick as a Brick|
 12: |Bohemian Rhapsody|
 13: |Lazing on a Sunday Afternoon|
 16: |Telegraph Road|
-total songs: 5
+total songs: 7
 |Hammer to Fall| is added to the Song database.
 |Mark Knopfler| is added to the Artist database.
+1: |Father to Son|
+3: |Brothers in Arms|
+5: |Aqualung|
+6: |Thick as a Brick|
+12: |Bohemian Rhapsody|
+13: |Lazing on a Sunday Afternoon|
+16: |Telegraph Road|
+17: |Hammer to Fall|
+total songs: 8

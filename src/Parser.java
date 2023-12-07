@@ -1,4 +1,7 @@
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.BufferedReader;
 import java.io.File;
 import java.util.Scanner;
 
@@ -11,23 +14,34 @@ import java.util.Scanner;
  * @version December 2023
  */
 public class Parser {
-    private Scanner file;
+    private BufferedReader reader;
     private int hashSize;
     private Processor processor;
 
     /**
      * Default constructor for Parser.
      */
-    public Parser(String filename, int size) throws FileNotFoundException {
-        file = new Scanner(new File(filename));
+    public Parser(String filename, int size) {
+        try {
+            reader = new BufferedReader(new FileReader(filename));
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
         hashSize = size;
         processor = new Processor(hashSize);
     }
 
 
     public void parseAll() {
-        while (file.hasNext()) {
-            parseNext();
+        String line;
+        try {
+            while ((line = reader.readLine()) != null) {
+                parseNext(line);
+            }
+        }
+        catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -35,34 +49,25 @@ public class Parser {
     /**
      * Parses through tokens in input file and executes them as it goes.
      */
-    private void parseNext() {
-        String command = file.next();
+    private void parseNext(String line) {
+        String command = line.substring(0, line.indexOf(" "));
+        String args = line.substring(line.indexOf(" ") + 1);
         switch (command) {
             case "insert":
-                file.useDelimiter("<SEP>");
-                String artist = file.next().trim();
-                file.useDelimiter("\n");
-                String song = file.next();
-                song = song.substring("<SEP>".length(), song.length() - 1);
-                file.useDelimiter("\\p{javaWhitespace}+");
-
+                String[] temp = args.split("<SEP>");
+                String artist = temp[0];
+                String song = temp[1];
                 processor.insert(artist, song);
                 break;
 
             case "remove":
-                String token = file.next();
-                file.useDelimiter("\n");
-                String name = file.next();
-                name = name.substring(1); // Remove space from front
-                file.useDelimiter("\\p{javaWhitespace}+");
-
+                String token = args.substring(0, args.indexOf(" "));
+                String name = args.substring(args.indexOf(" ") + 1);
                 processor.remove(token, name);
                 break;
 
             case "print":
-                String type = file.next();
-
-                processor.print(type);
+                processor.print(args);
                 break;
 
             default:
