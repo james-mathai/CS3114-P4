@@ -7,51 +7,59 @@
  * @version December 2023
  */
 public class Record {
-    private Handle handle;
+    private String key;
     private int vertex;
-    
+
     /**
      * Default constructor for Record class.
      * 
-     * @param hand is the handle to store
-     * @param vert is the vertex to store
+     * @param hand
+     *            is the handle to store
+     * @param vert
+     *            is the vertex to store
      */
-    public Record(Handle hand, int vert) {
-        handle = hand;
-        vertex = vert;
+    public Record(String k, int v) {
+        key = k;
+        vertex = v;
     }
-    
+
+
     /**
-     * Accessor method to retrieve handle.
+     * Accessor method to retrieve key.
      * 
-     * @return handle
+     * @return key
      */
-    public Handle getHandle() {
-        return handle;
+    public String key() {
+        return key;
     }
-    
+
+
     /**
      * Accessor method to retrieve vertex.
      * 
      * @return vertex
      */
-    public int getVertex() {
+    public int vertex() {
         return vertex;
     }
-    
+
+
     /**
-     * Changes record's handle object.
+     * Changes record's key.
      * 
-     * @param newHandle is the updated handle
+     * @param newKey
+     *            is the updated key
      */
-    public void setHandle(Handle newHandle) {
-        handle = newHandle;
+    public void setKey(String newKey) {
+        key = newKey;
     }
-    
+
+
     /**
      * Changes record's vertex value.
      * 
-     * @param newVertex is the new vertex value
+     * @param newVertex
+     *            is the new vertex value
      */
     public void setVertex(int newVertex) {
         vertex = newVertex;

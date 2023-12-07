@@ -11,27 +11,26 @@ import student.TestCase;
 public class RecordTest extends TestCase {
     private Handle handle;
     private Record record;
-    
+
     /**
      * Set up method for RecordTest class.
      */
     public void setUp() {
-        handle = new Handle("test");
-        record = new Record(handle, 5);
+        record = new Record("test", 5);
     }
-    
+
+
     /**
      * Tests Record class methods.
      */
     public void testRecord() {
-        assertEquals(record.getHandle(), handle);
-        assertEquals(record.getVertex(), 5);
-        
-        Handle temp = new Handle("new");
-        record.setHandle(temp);
+        assertEquals("test", record.key());
+        assertEquals(5, record.vertex());
+
+        record.setKey("new");
         record.setVertex(10);
-        
-        assertEquals(record.getHandle(), temp);
-        assertEquals(record.getVertex(), 10);
+
+        assertEquals("new", record.key());
+        assertEquals(10, record.vertex());
     }
 }
