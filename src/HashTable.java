@@ -120,7 +120,7 @@ public class HashTable {
         int base = Hash.h(key, table.length);
         int temp = base;
 
-        for (int i = 0; i < table.length; i++) {
+        for (int i = 0;; i++) {
             if (table[temp] == null) {
                 return -1;
             }
@@ -131,8 +131,6 @@ public class HashTable {
                 temp = ((base + (i * i)) % table.length);
             }
         }
-
-        return -1;
     }
 
 
