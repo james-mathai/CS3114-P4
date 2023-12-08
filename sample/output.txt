@@ -1,6 +1,9 @@
 |Jimbo| does not exist in the Artist database.
 total songs: 0
 total artists: 0
+There are 0 connected components
+The largest connected component has 0 elements
+The diameter of the largest component is 0
 |Dire Straits| is added to the Artist database.
 |Telegraph Road| is added to the Song database.
 6: |Telegraph Road|
@@ -47,32 +50,40 @@ total songs: 3
 6: |Telegraph Road|
 9: |Thick as a Brick|
 total songs: 5
-|Father to Son| is added to the Song database.
 Song hash table size doubled.
-1: |Father to Son|
+|Father to Son| is added to the Song database.
 3: |Brothers in Arms|
 5: |Aqualung|
 6: |Thick as a Brick|
-12: |Bohemian Rhapsody|
+12: |Father to Son|
+13: |Bohemian Rhapsody|
 16: |Telegraph Road|
 total songs: 6
 |Lazing on a Sunday Afternoon| is added to the Song database.
-1: |Father to Son|
+1: |Lazing on a Sunday Afternoon|
 3: |Brothers in Arms|
 5: |Aqualung|
 6: |Thick as a Brick|
-12: |Bohemian Rhapsody|
-13: |Lazing on a Sunday Afternoon|
+12: |Father to Son|
+13: |Bohemian Rhapsody|
 16: |Telegraph Road|
 total songs: 7
 |Hammer to Fall| is added to the Song database.
 |Mark Knopfler| is added to the Artist database.
-1: |Father to Son|
+1: |Lazing on a Sunday Afternoon|
 3: |Brothers in Arms|
 5: |Aqualung|
 6: |Thick as a Brick|
-12: |Bohemian Rhapsody|
-13: |Lazing on a Sunday Afternoon|
+12: |Father to Son|
+13: |Bohemian Rhapsody|
 16: |Telegraph Road|
 17: |Hammer to Fall|
 total songs: 8
+1: |Dire Straits|
+5: |Queen|
+6: |Mark Knopfler|
+9: |Jethro Tull|
+total artists: 4
+There are 3 connected components
+The largest connected component has 5 elements
+The diameter of the largest component is 2

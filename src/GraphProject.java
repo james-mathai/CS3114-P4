@@ -30,6 +30,13 @@
 
 import java.io.FileNotFoundException;
 
+/**
+ * The music database implementation for Project 4
+ * 
+ * @author James Mathai (jmathai)
+ * @author Vansh Parikh (vparikh33)
+ * @version December 2023
+ */
 public class GraphProject {
     private static Parser parser;
     private static Processor processor;
@@ -43,7 +50,8 @@ public class GraphProject {
      *             If initial hash size is ill-formed
      */
     public static void main(String[] args)
-        throws NumberFormatException, FileNotFoundException {
+        throws NumberFormatException,
+        FileNotFoundException {
         parser = new Parser(args[1], Integer.parseInt(args[0]));
         parser.parseAll();
     }

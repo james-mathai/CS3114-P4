@@ -14,6 +14,9 @@ public class Processor {
 
     /**
      * Default constructor for Processor class.
+     * 
+     * @param size
+     *            The initial size of the hash tables (and the graph)
      */
     public Processor(int size) {
         artists = new HashTable(size);
@@ -71,9 +74,6 @@ public class Processor {
 
         if (artists.getCapacity() > artistsSize) {
             System.out.println("Artist hash table size doubled.");
-        }
-        if (songs.getCapacity() > songsSize) {
-            System.out.println("Song hash table size doubled.");
         }
     }
 
@@ -143,7 +143,8 @@ public class Processor {
         }
         Record curr;
         for (int i = 0; i < table.getCapacity(); i++) {
-            if ((curr = table.getIndex(i)) != null) {
+            curr = table.getIndex(i);
+            if (curr != null) {
                 String key = "|" + curr.key() + "|";
                 if (curr == table.tombstone()) {
                     key = "TOMBSTONE";
@@ -155,8 +156,98 @@ public class Processor {
     }
 
 
+    /**
+     * Print graph information (Union/Find and Floyd's algorithms courtesy of
+     * OpenDSA)
+     */
     private void printGraph() {
+        UnionFind temp = new UnionFind(graph.size());
+        // Join connected vertices using Union/Find
+        for (int i = 0; i < graph.size(); i++) {
+            for (int j = 0; j < graph.size(); j++) {
+                if (graph.hasVertex(i) && graph.hasVertex(j) && graph.hasEdge(i,
+                    j)) {
 
+                    temp.union(i, j);
+                }
+            }
+        }
+
+        // Determine which group is largest and which it is
+        int[] count = new int[graph.size()];
+        for (int i = 0; i < count.length; i++) {
+            count[i] = 0;
+        }
+        for (int i = 0; i < count.length; i++) {
+            if (graph.hasVertex(i)) {
+                count[temp.find(i)]++;
+            }
+        }
+        int max = 0;
+        int root = -1;
+        int components = 0;
+        for (int i = 0; i < count.length; i++) {
+            if (count[i] > 0) {
+                components++;
+                if (count[i] > max) {
+                    max = count[i];
+                    root = i;
+                }
+            }
+        }
+
+        // Create a representation of vertices within the chosen group
+        int[] vertices = new int[max];
+        int numVertices = 0;
+        for (int i = 0; i < graph.size(); i++) {
+            if (temp.find(i) == root) {
+                vertices[numVertices++] = i;
+            }
+        }
+
+        // Use Floyd's algorithm
+        int[][] dist = new int[numVertices][numVertices];
+        // Initialize distances between exactly two vertices (1 if there is an
+        // edge between them, "infinity" if not)
+        for (int i = 0; i < numVertices; i++) {
+            for (int j = 0; j < numVertices; j++) {
+                if (graph.hasEdge(vertices[i], vertices[j])) {
+                    dist[i][j] = 1;
+                }
+                else {
+                    dist[i][j] = Integer.MAX_VALUE;
+                }
+            }
+        }
+        // Brute force paths
+        for (int k = 0; k < numVertices; k++) {
+            for (int i = 0; i < numVertices; i++) {
+                for (int j = 0; j < numVertices; j++) {
+                    if ((dist[i][k] != Integer.MAX_VALUE)
+                        && (dist[k][j] != Integer.MAX_VALUE)
+                        && (dist[i][j] > (dist[i][k] + dist[k][j]))) {
+
+                        dist[i][j] = dist[i][k] + dist[k][j];
+                    }
+                }
+            }
+        }
+
+        // Find the max distance that isn't "infinity"
+        int diameter = 0;
+        for (int i = 0; i < numVertices; i++) {
+            for (int j = 0; j < numVertices; j++) {
+                if (graph.hasVertex(i) && graph.hasVertex(j)
+                    && dist[i][j] != Integer.MAX_VALUE && dist[i][j] > diameter)
+                    diameter = dist[i][j];
+            }
+        }
+
+        System.out.println("There are " + components + " connected components");
+        System.out.println("The largest connected component has " + max
+            + " elements");
+        System.out.println("The diameter of the largest component is "
+            + diameter);
     }
 
 

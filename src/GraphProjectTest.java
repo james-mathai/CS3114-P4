@@ -44,9 +44,9 @@ public class GraphProjectTest extends TestCase {
 
 
     /**
-     * Test end-to-end on sample input/output
+     * Test end-to-end on my big sample input/output
      */
-    public void testSample() {
+    public void testEndToEnd() {
         String[] args = { "10", "sample/input.txt" };
         try {
             GraphProject.main(args);
@@ -58,6 +58,31 @@ public class GraphProjectTest extends TestCase {
         }
         try {
             assertEquals(readFile("sample/output.txt"), systemOut()
+                .getHistory());
+        }
+        catch (IOException e) {
+            // Fail if sample output isn't found
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+
+    /**
+     * Test end-to-end on sample input/output
+     */
+    public void testSample() {
+        String[] args = { "10", "sample/P4sampleInput.txt" };
+        try {
+            GraphProject.main(args);
+        }
+        catch (Exception e) {
+            // Fail if sample input isn't found
+            e.printStackTrace();
+            assertTrue(false);
+        }
+        try {
+            assertEquals(readFile("sample/P4sampleOutput.txt"), systemOut()
                 .getHistory());
         }
         catch (IOException e) {

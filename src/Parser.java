@@ -20,6 +20,11 @@ public class Parser {
 
     /**
      * Default constructor for Parser.
+     * 
+     * @param filename
+     *            The name of the input file
+     * @param size
+     *            The initial hash table size
      */
     public Parser(String filename, int size) {
         try {
@@ -33,6 +38,9 @@ public class Parser {
     }
 
 
+    /**
+     * Parse all lines in the input file
+     */
     public void parseAll() {
         String line;
         try {

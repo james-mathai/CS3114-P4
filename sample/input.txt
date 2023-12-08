@@ -1,6 +1,7 @@
 remove artist Jimbo
 print song
 print artist
+print graph
 insert Dire Straits<SEP>Telegraph Road
 print song
 print artist
@@ -28,3 +29,5 @@ insert Queen<SEP>Hammer to Fall
 insert Mark Knopfler<SEP>Telegraph Road
 insert Mark Knopfler<SEP>Brothers in Arms
 print song
+print artist
+print graph

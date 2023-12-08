@@ -13,9 +13,9 @@ public class Record {
     /**
      * Default constructor for Record class.
      * 
-     * @param hand
-     *            is the handle to store
-     * @param vert
+     * @param k
+     *            is the key to store
+     * @param v
      *            is the vertex to store
      */
     public Record(String k, int v) {

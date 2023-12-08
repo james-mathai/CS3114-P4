@@ -30,5 +30,12 @@ public class HashTest extends TestCase {
         assertTrue(Hash.h("Long Lonesome Blues", 10000) == 4635);
         assertTrue(Hash.h("Long   Lonesome Blues", 10000) == 4159);
         assertTrue(Hash.h("long Lonesome Blues", 10000) == 4667);
+        
+        assertEquals(12, Hash.h("Bohemian Rhapsody", 20));
+        assertEquals(3, Hash.h("Brothers in Arms", 20));
+        assertEquals(5, Hash.h("Aqualung", 20));
+        assertEquals(16, Hash.h("Telegraph Road", 20));
+        assertEquals(5, Hash.h("Thick as a Brick", 20));
+        assertEquals(12, Hash.h("Father to Son", 20));
     }
 }

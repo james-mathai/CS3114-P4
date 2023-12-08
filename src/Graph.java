@@ -12,7 +12,7 @@ public class Graph {
      */
     private class Edge {
         private int vertex;
-        private Edge prev, next;
+        private Edge next;
 
         /**
          * Create an edge pointing
@@ -24,9 +24,8 @@ public class Graph {
          * @param n
          *            The next edge in the adjacency list
          */
-        private Edge(int v, Edge p, Edge n) {
+        private Edge(int v, Edge n) {
             vertex = v;
-            prev = p;
             next = n;
         }
     }
@@ -138,7 +137,7 @@ public class Graph {
             }
         }
         // Set the head of the adjacency list and update numVertices
-        adjLists[idx] = new Edge(-1, null, null);
+        adjLists[idx] = new Edge(-1, null);
         numVertices++;
         return idx;
     }
@@ -162,11 +161,7 @@ public class Graph {
 
         // Add the edge
         Edge curr = find(v, w);
-        curr.next = new Edge(w, curr, curr.next);
-        // Update curr.next.next if necessary
-        if (curr.next.next != null) {
-            curr.next.next.prev = curr.next;
-        }
+        curr.next = new Edge(w, curr.next);
         numEdges++;
         return true;
     }
@@ -190,10 +185,6 @@ public class Graph {
         // Find and remove
         Edge curr = find(v, w);
         curr.next = curr.next.next;
-        // Update curr.next if necessary
-        if (curr.next != null) {
-            curr.next.prev = curr;
-        }
         numEdges--;
         return true;
     }
@@ -261,27 +252,28 @@ public class Graph {
         return v >= 0 && v < size && adjLists[v] != null;
     }
 
-
-    /**
+    /*
      * Get the neighbors of a vertex
      * 
      * @param v
-     *            The index of a vertex
+     * The index of a vertex
+     * 
      * @return An array of the indices of neighbors
+     *
+     * public int[] neighbors(int v) {
+     * // Count the number of neighbors
+     * int n = 0;
+     * Edge curr;
+     * for (curr = adjLists[v]; curr != null; curr = curr.next) {
+     * n++;
+     * }
+     * // Get the neighbors and return
+     * int[] temp = new int[n];
+     * n = 0;
+     * for (curr = adjLists[v].next; curr != null; curr = curr.next) {
+     * temp[n++] = curr.vertex;
+     * }
+     * return temp;
+     * }
      */
-    public int[] neighbors(int v) {
-        // Count the number of neighbors
-        int n = 0;
-        Edge curr;
-        for (curr = adjLists[v]; curr != null; curr = curr.next) {
-            n++;
-        }
-        // Get the neighbors and return
-        int[] temp = new int[n];
-        n = 0;
-        for (curr = adjLists[v].next; curr != null; curr = curr.next) {
-            temp[n++] = curr.vertex;
-        }
-        return temp;
-    }
 }

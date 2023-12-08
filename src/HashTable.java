@@ -12,7 +12,10 @@ public class HashTable {
     private Record tombstone;
 
     /**
-     * Default constructor for Hash class.
+     * Default constructor for HashTable class.
+     * 
+     * @param size
+     *            The initial capacity of the table
      */
     public HashTable(int size) {
         count = 0;
@@ -34,10 +37,11 @@ public class HashTable {
             int temp = probe(name);
 
             if (temp != -1) {
-                resize();
-
+                temp = probe(name);
                 table[temp] = new Record(name, -1);
                 count++;
+
+                resize();
 
                 return true;
             }
@@ -71,6 +75,13 @@ public class HashTable {
     }
 
 
+    /**
+     * Get a value from the table
+     * 
+     * @param name
+     *            The key for the value
+     * @return The value associated with the key
+     */
     public int get(String name) {
         int idx = hash(name);
         if (idx == -1) {
@@ -80,6 +91,13 @@ public class HashTable {
     }
 
 
+    /**
+     * Get the value stored at a given index in the table
+     * 
+     * @param index
+     *            The index to look at
+     * @return The value stored at that index
+     */
     public Record getIndex(int index) {
         return table[index];
     }
@@ -111,7 +129,7 @@ public class HashTable {
     /**
      * Checks hashtable for a specific value.
      * 
-     * @param value
+     * @param key
      *            to be searched for
      * 
      * @return index of value if found, -1 if not
@@ -134,6 +152,13 @@ public class HashTable {
     }
 
 
+    /**
+     * Check whether the table stores a given key
+     * 
+     * @param key
+     *            The key to check
+     * @return Whether the table contains key
+     */
     public boolean hasRecord(String key) {
         return hash(key) != -1;
     }
@@ -172,7 +197,7 @@ public class HashTable {
      * @return T/F depending on success of resize
      */
     public boolean resize() {
-        if (count >= (table.length / 2)) {
+        if (count > (table.length / 2)) {
             int newSize = table.length * 2;
             // int tempSize = count;
 
@@ -199,6 +224,7 @@ public class HashTable {
                 }
             }
 
+            System.out.println("Song hash table size doubled.");
             return true;
         }
 
@@ -226,6 +252,11 @@ public class HashTable {
     }
 
 
+    /**
+     * Return the tombstone instance
+     * 
+     * @return The tombstone
+     */
     public Record tombstone() {
         return tombstone;
     }
