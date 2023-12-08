@@ -8,6 +8,13 @@
 public class UnionFind {
     private int[] array;
 
+    /**
+     * Constructor for the UnionFind class
+     * 
+     * @param size
+     *            The capacity of the graph (not size because there may be
+     *            indices within graph that are empty)
+     */
     UnionFind(int size) {
         array = new int[size];
         // Initialize array
